@@ -1,0 +1,14 @@
+:root{
+  --c-dark: #101828;
+  --c-gray-700: #475467;
+  --c-gray-600: #6C717B;
+  --c-red: #E44B48;
+  --c-red-dark: #D84343;
+  --c-yellow: #FFC531;
+  --c-border: #DADDE1;
+  --c-bg: #F2F4F7;
+  --c-bg-2: #F7F7F7;
+  --c-white: #FFFFFF;
+
+  --radius: 14px;
+}

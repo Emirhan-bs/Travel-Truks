@@ -1,0 +1,11 @@
+@import "./variables.css";
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-dark);
+}
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
