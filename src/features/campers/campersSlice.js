@@ -5,9 +5,12 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
   async (params, { rejectWithValue }) => {
     try {
+      console.log("API çağrısı yapılıyor:", params);
       const res = await getCampers(params);
-
       const data = res.data;
+      
+      console.log("API'den gelen veri:", data);
+
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.items)
@@ -16,9 +19,13 @@ export const fetchCampers = createAsyncThunk(
         ? data.data
         : [];
 
-      return list;
+      console.log("İşlenen liste:", list);
+      console.log("Liste uzunluğu:", list.length);
+
+      return { list, fetchedCount: list.length };
     } catch (e) {
-      return rejectWithValue(e?.message || "Fetch campers failed");
+      console.error("API hatası:", e);
+      return rejectWithValue(e?.message || "Kamperler yüklenemedi");
     }
   }
 );
@@ -30,30 +37,20 @@ export const fetchCamperById = createAsyncThunk(
       const res = await getCamperById(id);
       return res.data;
     } catch (e) {
-      return rejectWithValue(e?.message || "Fetch camper failed");
+      return rejectWithValue(e?.message || "Kamper yüklenemedi");
     }
   }
 );
 
 const campersSlice = createSlice({
   name: "campers",
-  initialState: {
-    items: [],
-    page: 1,
-    limit: 4,
-    hasMore: true,
-    selected: null,
-    status: "idle",
-    error: null,
-  },
+  initialState: { items: [], status: "idle", error: null, total: 0 },
   reducers: {
-    resetCampers(state) {
+    resetCampers: (state) => {
       state.items = [];
-      state.page = 1;
-      state.hasMore = true;
-      state.selected = null;
       state.status = "idle";
       state.error = null;
+      state.total = 0;
     },
     nextPage(state) {
       state.page += 1;
@@ -64,31 +61,29 @@ const campersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // ---- campers list ----
       .addCase(fetchCampers.pending, (state) => {
         state.status = "loading";
-        state.error = null;
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.status = "succeeded";
-
-        const list = action.payload;
-
-        if (list.length < state.limit) {
+        const { list, fetchedCount } = action.payload;
+        if (fetchedCount < state.limit) {
           state.hasMore = false;
+        }
+
+        if (state.page === 1) {
+          state.items = list;
+          return;
         }
 
         const existingIds = new Set(state.items.map((x) => x.id));
         const uniqueList = list.filter((x) => !existingIds.has(x.id));
-
         state.items.push(...uniqueList);
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload || "Unknown error";
+        state.error = action.error.message;
       })
-
-      // ---- camper details ----
       .addCase(fetchCamperById.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -99,7 +94,7 @@ const campersSlice = createSlice({
       })
       .addCase(fetchCamperById.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload || "Unknown error";
+        state.error = action.payload || "Bilinmeyen hata";
       });
   },
 });

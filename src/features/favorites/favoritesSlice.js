@@ -1,28 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const STORAGE_KEY = "travelTrucks_favorites";
+
 const loadFromStorage = () => {
   try {
-    const data = localStorage.getItem("favorites");
-    return data ? JSON.parse(data) : [];
-  } catch {
-    return [];
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : { ids: [] };
+  } catch (error) {
+    console.error("Error loading favorites from localStorage:", error);
+    return { ids: [] };
   }
 };
 
 const saveToStorage = (state) => {
-  localStorage.setItem("favorites", JSON.stringify(state.ids));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (error) {
+    console.error("Error saving favorites to localStorage:", error);
+  }
 };
 
 const favoritesSlice = createSlice({
   name: "favorites",
-  initialState: {
-    ids: loadFromStorage(),
-  },
+  initialState: loadFromStorage(),
   reducers: {
-    toggleFavorite(state, action) {
+    toggleFavorite: (state, action) => {
       const id = action.payload;
       if (state.ids.includes(id)) {
-        state.ids = state.ids.filter((x) => x !== id);
+        state.ids = state.ids.filter((i) => i !== id);
       } else {
         state.ids.push(id);
       }

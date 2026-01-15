@@ -5,13 +5,12 @@ const filtersSlice = createSlice({
   initialState: {
     location: "",
     vehicleType: "",
+    transmission: "", 
     equipment: {
       AC: false,
       kitchen: false,
       bathroom: false,
       TV: false,
-      radio: false,
-      
     },
   },
   reducers: {
@@ -21,6 +20,9 @@ const filtersSlice = createSlice({
     setVehicleType(state, action) {
       state.vehicleType = action.payload;
     },
+    setTransmission(state, action) {
+      state.transmission = action.payload; 
+    },
     toggleEquipment(state, action) {
       const key = action.payload;
       state.equipment[key] = !state.equipment[key];
@@ -28,11 +30,18 @@ const filtersSlice = createSlice({
     resetFilters(state) {
       state.location = "";
       state.vehicleType = "";
+      state.transmission = "";
       Object.keys(state.equipment).forEach((k) => (state.equipment[k] = false));
     },
   },
 });
 
-export const { setLocation, setVehicleType, toggleEquipment, resetFilters } =
-  filtersSlice.actions;
+export const {
+  setLocation,
+  setVehicleType,
+  setTransmission,
+  toggleEquipment,
+  resetFilters,
+} = filtersSlice.actions;
+
 export default filtersSlice.reducer;

@@ -5,17 +5,21 @@ export default function Icon({
   size = 20,
   width,
   height,
-
-  variant = "fill", 
-
-  color = "currentColor",
-
+  variant = "auto",   
+  color,
   strokeWidth = 2,
-
   style,
   className,
+  fill,
+  stroke,
 }) {
-  const isStroke = variant === "stroke";
+  const id = `#icon-${name}`;
+
+  const finalFill =
+    fill ?? (variant === "stroke" ? "none" : variant === "fill" ? "currentColor" : "currentColor");
+
+  const finalStroke =
+    stroke ?? (variant === "fill" ? "none" : "currentColor");
 
   return (
     <svg
@@ -25,15 +29,15 @@ export default function Icon({
       style={{
         display: "inline-block",
         verticalAlign: "middle",
-        color,
+        ...(color ? { color } : null),
         ...style,
       }}
       aria-hidden="true"
-      fill={isStroke ? "none" : "currentColor"}
-      stroke={isStroke ? "currentColor" : "none"}
-      strokeWidth={isStroke ? strokeWidth : undefined}
+      fill={finalFill}
+      stroke={finalStroke}
+      strokeWidth={finalStroke !== "none" ? strokeWidth : undefined}
     >
-      <use href={`${spriteUrl}#icon-${name}`} />
+      <use href={`${spriteUrl}${id}`} xlinkHref={`${spriteUrl}${id}`} />
     </svg>
   );
 }
