@@ -1,75 +1,85 @@
-# TravelTrucks - Karavan Kiralama Platformu
+TravelTrucks – Camper Rental Platform
 
-Modern ve kullanıcı dostu bir karavan kiralama platformu. React, Redux Toolkit ve Vite ile geliştirilmiştir.
+A modern and user-friendly camper rental platform built with React, Redux Toolkit and Vite.
 
-## 🚐 Proje Hakkında
+🚐 About the Project
 
-TravelTrucks, kullanıcıların ihtiyaçlarına uygun karavanları kolayca bulabilecekleri, filtreleyebilecekleri ve rezervasyon yapabilecekleri bir web uygulamasıdır.
+TravelTrucks is a web application where users can easily find, filter and book campers according to their needs.
 
-## ✨ Temel Özellikler
+✨ Core Features
 
-- 🔍 **Gelişmiş Filtreleme Sistemi**: Lokasyon, araç tipi, donanım ve transmisyon türüne göre filtreleme
-- 💝 **Favori Sistemi**: Beğendiğiniz karavanları favorilere ekleme
-- 📱 **Responsive Tasarım**: Tüm cihazlarda mükemmel görünüm
-- 🎨 **Modern UI/UX**: Figma tasarımına sadık, kullanıcı dostu arayüz
-- ⚡ **Hızlı Performans**: Vite ile optimize edilmiş build sistemi
-- 🔄 **Redux State Management**: Merkezi ve öngörülebilir state yönetimi
-- 📅 **Interaktif Takvim**: Rezervasyon tarihi seçimi için özel takvim
-- ⭐ **Değerlendirme Sistemi**: Kullanıcı yorumları ve puanlama
-- 🔔 **Toast Bildirimleri**: Kullanıcı aksiyonları için anında geri bildirim
+🔍 Advanced Filtering System: Filter by location, vehicle type, features and transmission
 
-## 🛠️ Kullanılan Teknolojiler
+💝 Favorites System: Add campers to your favorites
 
-- **React 18** - UI geliştirme
-- **Redux Toolkit** - State yönetimi
-- **React Router DOM** - Sayfa yönlendirme
-- **Axios** - HTTP istekleri
-- **Vite** - Build tool
-- **React Hot Toast** - Bildirimler
-- **CSS Modules** - Styling
+📱 Responsive Design: Works perfectly on all devices
 
-## 📦 Kurulum
+🎨 Modern UI/UX: User-friendly interface based on Figma design
 
-1. **Projeyi klonlayın:**
-```bash
-git clone https://github.com/kullaniciadi/travel-trucks.git
+⚡ High Performance: Optimized build system with Vite
+
+🔄 Redux State Management: Centralized and predictable state management
+
+📅 Interactive Calendar: Custom date picker for booking
+
+⭐ Rating System: User reviews and ratings
+
+🔔 Toast Notifications: Instant feedback for user actions
+
+🛠️ Technologies Used
+
+React 18 – UI development
+
+Redux Toolkit – State management
+
+React Router DOM – Routing
+
+Axios – HTTP requests
+
+Vite – Build tool
+
+React Hot Toast – Notifications
+
+CSS Modules – Styling
+
+📦 Installation
+
+Clone the project:
+
+git clone https://github.com/your-username/travel-trucks.git
 cd travel-trucks
-```
 
-2. **Bağımlılıkları yükleyin:**
-```bash
+
+Install dependencies:
+
 npm install
-```
 
-3. **Geliştirme sunucusunu başlatın:**
-```bash
+
+Start development server:
+
 npm run dev
-```
 
-4. **Tarayıcıda açın:**
-```
+
+Open in browser:
+
 http://localhost:5173
-```
 
-## 🚀 Production Build
-```bash
+🚀 Production Build
 npm run build
 npm run preview
-```
 
-## 📁 Proje Yapısı
-```
+📁 Project Structure
 travel-trucks/
 ├── public/
 │   └── hero-bg.jpg
 ├── src/
 │   ├── api/
-│   │   └── campers.js          # API istekleri
+│   │   └── campers.js          # API requests
 │   ├── app/
-│   │   └── store.js             # Redux store
+│   │   └── store.js            # Redux store
 │   ├── assets/
 │   │   ├── icons/
-│   │   │   └── symbol-defs.svg  # SVG sprite
+│   │   │   └── symbol-defs.svg # SVG sprite
 │   │   └── images/
 │   ├── components/
 │   │   ├── Header/
@@ -89,80 +99,69 @@ travel-trucks/
 │   │   └── CamperDetailsPage.jsx
 │   ├── App.jsx
 │   └── main.jsx
-├── vercel.json                  # Vercel yapılandırması
+├── vercel.json                 # Vercel config
 ├── package.json
-├── README.md                    # English documentation
-└── README.tr.md                 # Türkçe dokümantasyon
-```
+└── README.md
 
-## 🔧 Yapılandırma
+🔧 Configuration
 
-**API Endpoint:**
-```javascript
+API Endpoint:
+
 // src/api/campers.js
 baseURL: "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io"
-```
 
-## 💡 Kullanım
+💡 How to Use
 
-1. **Ana Sayfa**: Hero banner ile başlayın, "View Now" butonu ile kataloğa gidin
-2. **Katalog**: Sol taraftaki filtrelerle karavanları arayın
-3. **Detay Sayfası**: "Show more" ile karavan detaylarını görün
-4. **Rezervasyon**: Sağdaki formu doldurun ve tarih seçin
-5. **Favoriler**: Kalp ikonuna tıklayarak favorilere ekleyin
+Home Page: Start with hero banner, go to catalog with “View Now”
 
-## 🎯 Özellik Detayları
+Catalog: Search campers using filters on the left
 
-### Filtreleme Sistemi
-- **Lokasyon**: Şehir veya ülke bazlı arama
-- **Araç Tipi**: Van, Fully Integrated, Alcove
-- **Transmisyon**: Automatic
-- **Donanım**: AC, Kitchen, TV, Bathroom vb.
+Details Page: View camper details and gallery
 
-### Loading Indicators
-- API istekleri sırasında loading state
-- Skeleton screen'ler
-- Disabled butonlar yüklenme sırasında
+Booking: Fill the form and select a date
 
-### Responsive Breakpoints
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
+Favorites: Add campers using the heart icon
 
-## 🐛 Bilinen Sorunlar
+🎯 Feature Details
+Filtering System
 
-- ~~404 hatası (Vercel routing)~~ ✅ Çözüldü
+Location: Search by city or country
 
-## 🔜 Gelecek Özellikler
+Vehicle Type: Van, Fully Integrated, Alcove
 
-- [ ] Kullanıcı kimlik doğrulama
-- [ ] Ödeme sistemi entegrasyonu
-- [ ] Gelişmiş arama filtreleri
-- [ ] Kullanıcı dashboard'u
-- [ ] Email bildirimleri
+Transmission: Automatic
 
-## 📝 Lisans
+Features: AC, Kitchen, TV, Bathroom, etc.
 
-MIT License - Bu projeyi özgürce kullanabilirsiniz.
+Loading Indicators
 
-## 👨‍💻 Geliştirici
+Loading state during API requests
 
-**[Adın Soyadın]**
-- GitHub: [@kullaniciadin]
-- Email: email@example.com
-- LinkedIn: [linkedin.com/in/kullaniciadin]
+Skeleton or placeholder UI
 
-## 🙏 Teşekkürler
+Disabled buttons while loading
 
-- [MockAPI.io](https://mockapi.io) - API servisi
-- [Unsplash](https://unsplash.com) - Görseller
-- [Figma Community](https://www.figma.com) - Tasarım
+Responsive Breakpoints
 
----
+Mobile: < 768px
 
-⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
+Tablet: 768px – 1024px
 
-## 🌐 Dil / Language
+Desktop: > 1024px
+👨‍💻 Developer
 
-- [English](./README.md)
-- [Türkçe](./README.tr.md)
+[Emirhan BUYUKSENİRLİ]
+
+GitHub: [https://github.com/Emirhan-bs]
+
+Email: emirhanbuyuksenirli@gmail.com
+
+LinkedIn: www.linkedin.com/in/emirhan-buyuksenirli
+
+🙏 Credits
+
+MockAPI.io – API service
+
+Unsplash – Images
+
+Figma Community – Design
