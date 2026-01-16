@@ -40,5 +40,5 @@ TravelTrucks is a web application where users can easily find, filter and book c
 
 ### Clone the project:
 ```bash
-git clone https://github.com/your-username/travel-trucks.git
+git clone https://github.com/Emirhan-bs/travel-trucks.git
 cd travel-trucks
